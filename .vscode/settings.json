@@ -1,0 +1,66 @@
+{
+  "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 28,
+  "editor.letterSpacing": 0.5,
+  "workbench.editor.tabSizing": "shrink",
+  // Set the default
+  "editor.formatOnSave": false,
+  // Enable per-language
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "html.format.enable": true,
+  "html.format.preserveNewLines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "workbench.activityBar.visible": true,
+  "workbench.sideBar.location": "left",
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [
+    80,
+    100,
+    120
+  ],
+  "editor.minimap.showSlider": "always",
+  "workbench.startupEditor": "newUntitledFile",
+  "extensions.ignoreRecommendations": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.next": true,
+    "**/flow-typed": true
+  },
+  "search.exclude": {
+    "**/build": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/bower_components": true
+  },
+  "javascript.validate.enable": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  // show snippets before any other auto completion
+  "editor.snippetSuggestions": "top",
+  // this lets you quickly open multiple items in a row and not have the previous ones closed on you
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
+  "eslint.alwaysShowStatus": true,
+  "flow.useNPMPackagedFlow": true,
+  "prettier.printWidth": 100,
+  "prettier.trailingComma": "es5",
+  "prettier.singleQuote": true,
+  "prettier.eslintIntegration": false,
+  "prettier.parser": "flow",
+  "workbench.iconTheme": "file-icons",
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "gitlens.historyExplorer.enabled": true
+}

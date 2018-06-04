@@ -1,0 +1,42 @@
+#############
+# Functions #
+#############
+
+# Put this in your .zshrc or .bashrc file
+# Install `tree` first — brew install tree
+function t() {
+  # Defaults to 3 levels deep, do more with `t 5` or `t 1`
+  # pass additional args after
+  tree -I '.git|node_modules|bower_components|.DS_Store' --dirsfirst --filelimit 15 -L ${1:-3} -aC $2
+}
+
+function changelog() {
+  currentTag="HEAD"
+  previousTag=$1
+  fullName=$(git config user.name)
+  userName="bshackelford"
+
+  format='%cn %s %h <nl>'
+  commits=$(git log --pretty=format:"$format" $currentTag...$previousTag)
+
+  # set newlines.
+  formattedCommits=$(echo "$commits" | sed 's/<nl>/\'$'\n/g')
+  # replace username without @ with full username.
+  formattedCommits=${formattedCommits//$userName/@$userName}
+  # replace full name with username.
+  formattedCommits=${formattedCommits//$fullName/@$userName}
+
+  # replace GitHub web username with username.
+  formattedCommits=${formattedCommits//GitHub/@$userName}
+
+  # save to file.
+  echo "$formattedCommits"
+}
+
+function cl() {
+  currentTag="HEAD"
+  previousTag=$1
+  dir=$2
+  commits=$(git log --oneline $previousTag.. -- $dir | cat)
+  echo $commits
+}

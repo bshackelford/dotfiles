@@ -1,0 +1,26 @@
+###########
+# Exports #
+###########
+
+
+# Go setup
+export GOROOT="/usr/local/opt/go/libexec"
+export GOPATH="$HOME/vsco/go"
+export PATH="$PATH:$GOPATH/bin"
+
+export OPSCODE_USER=bshackelford
+export VSCO_USER=bshackelford
+export VSCO=local
+
+### Set Editors
+export EDITOR=vim
+export REACT_EDITOR=atom
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Add diff-highlight for prettier git diff (see .gitconfig)
+export PATH="$PATH:/usr/local/opt/git/share/git-core/contrib/diff-highlight"
+
+### Define the ANDROID_HOME environment variable
+export ANDROID_HOME=/usr/local/opt/android-sdk

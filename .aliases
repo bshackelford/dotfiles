@@ -1,0 +1,33 @@
+###########
+# Aliases #
+###########
+
+# a couple handy aliases
+alias cdv='cd ~/vsco/go/src/github.com/vsco/godel'
+alias v='vagrant'
+alias vup='cd ~/vsco/vagrant && vagrant up vsco-mango && cd -'
+alias vss='cd ~/vsco/vagrant && vagrant ssh vsco-mango && cd -'
+alias vh='cd ~/vsco/vagrant && vagrant halt vsco-mango && cd -'
+alias dir='ls -la'
+alias gut='git'
+alias got='git'
+alias st='git status'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias gcd='git checkout dev2; git pull'
+alias gcm='git checkout master; git pull'
+alias gbd='git branch -D'
+alias gdm='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
+alias gfr='git fetch upstream; git rebase upstream/master'
+
+# kill all the tabs in Chrome to free up memory
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+# Sublime Text Editor
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+
+# Notes in Dropbox alias
+alias notes='vim ~/Dropbox\ \(Personal\)/notes/`date "+%Y-%m-%d"`.md'
+
+# Homebrew update, upgrade, clean, doctor
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
