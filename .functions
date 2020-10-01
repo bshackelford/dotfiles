@@ -2,7 +2,6 @@
 # Functions #
 #############
 
-# Put this in your .zshrc or .bashrc file
 # Install `tree` first — brew install tree
 function t() {
   # Defaults to 3 levels deep, do more with `t 5` or `t 1`
@@ -37,6 +36,53 @@ function cl() {
   currentTag="HEAD"
   previousTag=$1
   dir=$2
-  commits=$(git log --oneline $previousTag.. -- $dir | cat)
+  # commits=$(git log --oneline $previousTag.. -- $dir | cat)
+  # commits=$(git log --pretty=format:"%h%x09%an%x09%ar%x09%s" --date=short $previousTag.. -- $dir | cat)
+  commits=$(git log --pretty=format:"%<(12)%h%<(24)%an%<(18)%ar %s" --date=short $previousTag.. -- $dir | cat)
   echo $commits
+}
+
+function changeMac() {
+  local mac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
+  sudo ifconfig en0 ether $mac
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+  echo "Your new physical address is $mac"
+}
+
+function rmapp() {
+  app=$1
+  sudo rm -rf /Applications/$app.app
+  rm -rf ~/Library/Application\ Support/$app
+  rm -rf ~/Library/Preferences/$app
+  rm -rf ~/Library/Caches/$app
+}
+
+function dclean ()
+{
+    yes | docker container prune;
+    yes | docker image prune;
+    yes | docker volume prune
+}
+
+function qq {
+  # directory
+  dir=$1
+
+  # assume rest of the arguments are flags for bazel
+  shift
+
+  bazel run //:gazelle -- $dir
+  bazel test //$dir/... ${@}
+}
+
+function qqq {
+  # directory
+  dir=$1
+
+  # assume rest of the arguments are flags for bazel
+  shift
+
+  bazel run //:gazelle -- $dir
+  bazel build //$dir/... ${@}
 }

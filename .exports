@@ -2,19 +2,22 @@
 # Exports #
 ###########
 
+export HISTTIMEFORMAT='%F %T '
+
+PATH="$PATH:/usr/local/bin"
+PATH="$PATH:/usr/local/sbin"
+PATH="$PATH:/usr/local/bin/docker-credential-ecr-login"
+PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH
 
 # Go setup
-export GOROOT="/usr/local/opt/go/libexec"
-export GOPATH="$HOME/vsco/go"
+export GOROOT="/usr/local/bin/go"
+export GOPATH="$HOME/Developer/go"
 export PATH="$PATH:$GOPATH/bin"
-
-export OPSCODE_USER=bshackelford
-export VSCO_USER=bshackelford
-export VSCO=local
 
 ### Set Editors
 export EDITOR=vim
-export REACT_EDITOR=atom
+export REACT_EDITOR=code
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
