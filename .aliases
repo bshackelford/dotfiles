@@ -2,26 +2,36 @@
 # Aliases #
 ###########
 
-# a couple handy aliases
-alias cdv='cd ~/vsco/go/src/github.com/vsco/godel'
-alias v='vagrant'
-alias vup='cd ~/vsco/vagrant && vagrant up vsco-mango && cd -'
-alias vss='cd ~/vsco/vagrant && vagrant ssh vsco-mango && cd -'
-alias vh='cd ~/vsco/vagrant && vagrant halt vsco-mango && cd -'
+alias ds='docker stats --no-stream'
+alias dcl='docker-compose logs -f'
+alias dcu='docker-compose up -d'
+
 alias dir='ls -la'
+
 alias gut='git'
 alias got='git'
 alias st='git status'
 alias gc='git checkout'
 alias gcb='git checkout -b'
-alias gcd='git checkout dev2; git pull'
-alias gcm='git checkout master; git pull'
+alias gcm='git checkout master; git pull; git fetch --prune; gbdm'
 alias gbd='git branch -D'
+# "git delete merged"
 alias gdm='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
 alias gfr='git fetch upstream; git rebase upstream/master'
+# "git branch delete merged" - Delete local GIT branches that were deleted on remote repository
+# alias gbdm="git branch -D \$(git branch -vv | grep ': gone]' | grep -v '\*' | awk '{ print \$1; }')"
+alias gbdm="for branch in \$(git branch -vv | grep ': gone]' | awk '{print \$1}'); do git branch -D \$branch; done"
+alias gfp='git fetch --prune'
 
 # kill all the tabs in Chrome to free up memory
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+# ssh into aws ec2 personal instance
+# alias sshaws="ssh -i ~/.ssh/aws-bshackelford.pem root@ec2-54-186-191-65.us-west-2.compute.amazonaws.com"
+alias sshaws="ssh -i ~/.ssh/aws-bshackelford.pem ec2-user@ec2-54-218-54-55.us-west-2.compute.amazonaws.com"
+
+# Code Insiders
+alias ci='code-insiders'
 
 # Sublime Text Editor
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
@@ -29,5 +39,8 @@ alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 # Notes in Dropbox alias
 alias notes='vim ~/Dropbox\ \(Personal\)/notes/`date "+%Y-%m-%d"`.md'
 
+# Yarn Upgrade global deps
+alias ygu='yarn global upgrade-interactive'
+
 # Homebrew update, upgrade, clean, doctor
-alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor `brew doctor --list-checks | grep -v stray_headers`'
