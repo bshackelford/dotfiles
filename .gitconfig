@@ -1,3 +1,6 @@
+[user]
+  name = Brandon Shackelford
+  email = brandonmshackelford@gmail.com
 [alias]
   lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   # View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -13,43 +16,40 @@
   unstage = reset HEAD --
   po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
   stats = shortlog
+[core]
+  excludesfile = "$HOME/.gitignore"
+  precomposeunicode = false
+  # insanely beautiful diffs
+  # pager = bash -lc 'diff-highlight | less -r' -
+[push]
+  default = simple
+[pull]
+  default = simple
+  rebase = true
 [filter "media"]
   required = true
   clean = git media clean %f
   smudge = git media smudge %f
-[user]
-  name = Brandon Shackelford
-  email = brandonmshackelford@gmail.com
 [color]
   ui = 1
 [mergetool]
   keepBackup = true
   prompt = false
-[core]
-  excludesfile = /Users/bshackelford/.gitignore_global
-  precomposeunicode = false
-  # insanely beautiful diffs
-  # pager = bash -lc 'diff-highlight | less -r' -
 [color "diff-highlight"]
   oldNormal = "red bold"
   oldHighlight = "red bold 52"
   newNormal = "green bold"
   newHighlight = "green bold 22"
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
 [difftool "kaleidoscope"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path =
 [mergetool "kaleidoscope"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
-[push]
-  default = simple
-[pull]
-  default = simple
-  rebase = true
-[filter "hawser"]
-  clean = git hawser clean %f
-  smudge = git hawser smudge %f
-  required = true
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustexitcode = true

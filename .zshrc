@@ -1,16 +1,12 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/bshackelford/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="agnoster"
-# ZSH_THEME="TayBalt"
-# ZSH_THEME="shackbalt"
-# ZSH_THEME="honukai"
 ZSH_THEME="pure"
-DEFAULT_USER="bshackelford"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,6 +50,10 @@ plugins=(git bower brew npm yarn extract colorize docker git-open zsh-syntax-hig
 
 # User configuration
 
+# Load pure prompt (https://github.com/sindresorhus/pure)
+autoload -U promptinit; promptinit
+prompt pure
+
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
@@ -88,3 +88,6 @@ source $ZSH/oh-my-zsh.sh
 source ~/.bash_profile
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# optionally set DEFAULT_USER in ~/.zshrc to your regular username to hide the “user@hostname” info when you’re logged in as yourself on your local machine.
+DEFAULT_USER="$(whoami)"

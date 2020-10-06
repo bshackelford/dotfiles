@@ -13,7 +13,7 @@ function changelog() {
   currentTag="HEAD"
   previousTag=$1
   fullName=$(git config user.name)
-  userName="bshackelford"
+  userName="bshackelford" # GitHub username
 
   format='%cn %s %h <nl>'
   commits=$(git log --pretty=format:"$format" $currentTag...$previousTag)
@@ -58,11 +58,10 @@ function rmapp() {
   rm -rf ~/Library/Caches/$app
 }
 
-function dclean ()
-{
-    yes | docker container prune;
-    yes | docker image prune;
-    yes | docker volume prune
+function dclean() {
+  yes | docker container prune;
+  yes | docker image prune;
+  yes | docker volume prune
 }
 
 function qq {
