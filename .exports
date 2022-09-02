@@ -1,29 +1,7 @@
-###########
-# Exports #
-###########
+# .exports
 
 export HISTTIMEFORMAT='%F %T '
-
-PATH="$PATH:/usr/local/bin"
-PATH="$PATH:/usr/local/sbin"
-PATH="$PATH:/usr/local/bin/docker-credential-ecr-login"
-PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH
-
-# Go setup
-export GOROOT="/usr/local/bin/go"
-export GOPATH="$HOME/Developer/go"
-export PATH="$PATH:$GOPATH/bin"
 
 ### Set Editors
 export EDITOR=vim
 export REACT_EDITOR=code
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-### Add diff-highlight for prettier git diff (see .gitconfig)
-export PATH="$PATH:/usr/local/opt/git/share/git-core/contrib/diff-highlight"
-
-### Define the ANDROID_HOME environment variable
-export ANDROID_HOME=/usr/local/opt/android-sdk

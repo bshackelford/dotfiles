@@ -1,6 +1,4 @@
-#############
-# Functions #
-#############
+# .functions
 
 # Install `tree` first — brew install tree
 function t() {

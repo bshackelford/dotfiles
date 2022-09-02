@@ -2,7 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master;
+git pull origin main;
 
 function bootstrap() {
   rsync --exclude ".git/" \
@@ -12,7 +12,7 @@ function bootstrap() {
     --exclude "README.md" \
     --exclude "LICENSE-MIT.txt" \
     -avh --no-perms . ~;
-  source ~/.bash_profile;
+  source ~/.zprofile;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

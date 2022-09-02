@@ -1,6 +1,4 @@
-###########
-# Aliases #
-###########
+# .aliases
 
 alias dir='ls -la'
 

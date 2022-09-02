@@ -1,6 +1,8 @@
 [user]
   name = Brandon Shackelford
   email = brandonmshackelford@gmail.com
+[github]
+  user = bshackelford
 [alias]
   lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   # View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -16,20 +18,18 @@
   unstage = reset HEAD --
   po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
   stats = shortlog
-[core]
-  excludesfile = "$HOME/.gitignore"
-  precomposeunicode = false
-  # insanely beautiful diffs
-  # pager = bash -lc 'diff-highlight | less -r' -
+  whoami= !git config user.name && git config user.email
 [push]
   default = simple
 [pull]
   default = simple
   rebase = true
-[filter "media"]
-  required = true
-  clean = git media clean %f
-  smudge = git media smudge %f
+[core]
+  editor = vim
+  excludesfile = "$HOME/.gitignore"
+  precomposeunicode = false
+  # insanely beautiful diffs
+  # pager = bash -lc 'diff-highlight | less -r' -
 [color]
   ui = 1
 [mergetool]
@@ -44,28 +44,32 @@
   clean = git hawser clean %f
   smudge = git hawser smudge %f
   required = true
-[difftool "kaleidoscope"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-[mergetool "kaleidoscope"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustexitcode = true
-[merge]
-  tool = Kaleidoscope
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-  prompt = false
-[diff]
-  tool = Kaleidoscope
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+# [merge]
+#   tool = Kaleidoscope
+[difftool]
+  prompt = false
+# [diff]
+#   tool = Kaleidoscope
+# [difftool "kaleidoscope"]
+#   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+#   path =
+# [mergetool "kaleidoscope"]
+#   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+#   trustExitCode = true
+# [mergetool "Kaleidoscope"]
+#   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+#   trustexitcode = true
+# [difftool "Kaleidoscope"]
+#   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [http "https://gopkg.in"]
   followRedirects = true
 [http]
