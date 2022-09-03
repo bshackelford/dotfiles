@@ -14,7 +14,7 @@ PATH="$PATH:/usr/local/bin/docker-credential-ecr-login"
 PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Go setup
-export GOROOT="/usr/local/bin/go"
+# export GOROOT="/usr/local/go/bin/go"
 export GOPATH="$HOME/Developer/go"
 PATH="$PATH:$GOPATH/bin"
 
