@@ -2,6 +2,6 @@
 
 export HISTTIMEFORMAT='%F %T '
 
-### Set Editors
+# Set Editors
 export EDITOR=vim
 export REACT_EDITOR=code
