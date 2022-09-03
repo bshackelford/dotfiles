@@ -11,7 +11,7 @@ function changelog() {
   currentTag="HEAD"
   previousTag=$1
   fullName=$(git config user.name)
-  userName="bshackelford" # GitHub username
+  userName="bshackelford"
 
   format='%cn %s %h <nl>'
   commits=$(git log --pretty=format:"$format" $currentTag...$previousTag)
@@ -36,7 +36,8 @@ function cl() {
   dir=$2
   # commits=$(git log --oneline $previousTag.. -- $dir | cat)
   # commits=$(git log --pretty=format:"%h%x09%an%x09%ar%x09%s" --date=short $previousTag.. -- $dir | cat)
-  commits=$(git log --pretty=format:"%<(12)%h%<(24)%an%<(18)%ar %s" --date=short $previousTag.. -- $dir | cat)
+  # commits=$(git log --pretty=format:"%<(12)%h%<(24)%an%<(18)%ar %s" --date=short $previousTag.. -- $dir | cat)
+  commits=$(git shortlog $previousTag.. -- $dir | cat)
   echo $commits
 }
 

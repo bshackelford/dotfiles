@@ -8,15 +8,17 @@ alias got='git'
 alias st='git status'
 alias gc='git checkout'
 alias gcb='git checkout -b'
-alias gcm='git checkout master; git pull; git fetch --prune; gbdm'
+alias gcm='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@"); git pull; git fetch --prune; gbdm'
 alias gbd='git branch -D'
 # "git delete merged"
-alias gdm='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
+alias gdm='git branch --merged | grep -v "\*" | grep -v master | grep -v main | xargs -n 1 git branch -d'
 alias gfr='git fetch upstream; git rebase upstream/master'
 # "git branch delete merged" - Delete local GIT branches that were deleted on remote repository
 # alias gbdm="git branch -D \$(git branch -vv | grep ': gone]' | grep -v '\*' | awk '{ print \$1; }')"
 alias gbdm="for branch in \$(git branch -vv | grep ': gone]' | awk '{print \$1}'); do git branch -D \$branch; done"
 alias gfp='git fetch --prune'
+alias ghpc='gh pr create'
+alias ghpv='gh pr view --web'
 
 # Docker
 alias ds='docker stats --no-stream'
@@ -25,6 +27,10 @@ alias dcu='docker-compose up -d'
 
 # Kill all the tabs in Chrome to free up memory
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+# ssh into aws ec2 personal instance
+# alias sshaws="ssh -i ~/.ssh/aws-bshackelford.pem root@ec2-54-186-191-65.us-west-2.compute.amazonaws.com"
+alias sshaws="ssh -i ~/.ssh/aws-bshackelford.pem ec2-user@ec2-54-218-54-55.us-west-2.compute.amazonaws.com"
 
 # Code Insiders
 alias ci='code-insiders'
